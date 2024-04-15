@@ -10,6 +10,7 @@ from itertools import combinations
 import numpy as np
 from icecream import ic  # pylint: disable=unused-import
 from sklearn.cluster import DBSCAN
+from typing import List, Tuple
 
 from fsd_path_planning.skidpad.skidpad_path_data import BASE_SKIDPAD_PATH
 from fsd_path_planning.types import FloatArray, IntArray
@@ -20,7 +21,7 @@ from fsd_path_planning.utils.math_utils import (
     rotate,
 )
 
-PowersetCirceFitResult = list[tuple[FloatArray, IntArray]]
+PowersetCirceFitResult = List[Tuple[FloatArray, IntArray]]
 
 
 def circle_fit_powerset(points: np.ndarray) -> PowersetCirceFitResult:
@@ -221,7 +222,7 @@ class SkidpadRelocalizer:
 
     def attempt_relocalization_calculation(
         self,
-        cones: list[FloatArray],
+        cones: List[FloatArray],
         vehicle_position: FloatArray,
         vehicle_direction: FloatArray,
     ) -> bool:

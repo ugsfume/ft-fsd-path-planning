@@ -6,7 +6,7 @@ Project: fsd_path_planning
 """
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, Tuple
 
 import numpy as np
 
@@ -30,7 +30,7 @@ def calc_final_configs_for_left_and_right(
     cones: FloatArray,
     car_pos: FloatArray,
     car_dir: FloatArray,
-) -> tuple[IntArray, IntArray]:
+) -> Tuple[IntArray, IntArray]:
     left_score_is_none = left_scores is None
     left_config_is_none = left_configs is None
     assert left_score_is_none == left_config_is_none
@@ -72,7 +72,7 @@ def calc_final_configs_for_left_and_right(
 def calc_final_configs_when_only_one_side_has_configs(
     left_configs: Optional[IntArray],
     right_configs: Optional[IntArray],
-) -> tuple[IntArray, IntArray]:
+) -> Tuple[IntArray, IntArray]:
     empty_config = np.zeros(0, dtype=int)
 
     left_config_is_none = left_configs is None
@@ -102,7 +102,7 @@ def calc_final_configs_when_both_available(
     cones: FloatArray,
     car_position: FloatArray,
     car_direction: FloatArray,
-) -> tuple[IntArray, IntArray]:
+) -> Tuple[IntArray, IntArray]:
     # we need to pick the best one for each side
 
     left_config = left_configs[0]
@@ -122,7 +122,7 @@ def handle_same_cone_in_both_configs(
     cones: FloatArray,
     left_config: IntArray,
     right_config: IntArray,
-) -> tuple[Optional[IntArray], Optional[IntArray]]:
+) -> Tuple[Optional[IntArray], Optional[IntArray]]:
     (
         same_cone_intersection,
         left_intersection_idxs,
@@ -163,7 +163,7 @@ def calc_new_length_for_configs_for_same_cone_intersection(
     right_config: IntArray,
     left_intersection_index: int,
     right_intersection_index: int,
-) -> tuple[int, int]:
+) -> Tuple[int, int]:
     cones_xy = cones[:, :2]
     if left_intersection_index > 0 and right_intersection_index > 0:
         prev_left = left_config[left_intersection_index - 1]

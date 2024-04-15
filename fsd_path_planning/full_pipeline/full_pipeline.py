@@ -11,7 +11,7 @@ Project: fsd_path_planning
 """
 from __future__ import annotations
 
-from typing import Any, List, Optional, Union
+from typing import Any, List, Optional, Union, Tuple
 
 import numpy as np
 
@@ -67,7 +67,7 @@ class PathPlanner:
         return_intermediate_results: bool = False,
     ) -> Union[
         FloatArray,
-        tuple[
+        Tuple[
             FloatArray,
             FloatArray,
             FloatArray,

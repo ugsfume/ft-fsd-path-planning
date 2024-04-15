@@ -9,7 +9,7 @@ Project: fsd_path_planning
 
 from __future__ import annotations
 
-from typing import Literal, Tuple, cast
+from typing import Literal, Tuple, cast, List
 
 import numpy as np
 from icecream import ic  # pylint: disable=unused-import
@@ -217,7 +217,7 @@ def insert_virtual_cones_to_existing(
     other_side_cones: FloatArray,
     other_side_virtual_cones: FloatArray,
     car_position: FloatArray,
-) -> tuple[FloatArray, list[FloatArray]]:
+) -> Tuple[FloatArray, List[FloatArray]]:
     """
     Combine the virtual with the real cones into a single array.
     """
@@ -235,7 +235,7 @@ def insert_virtual_cones_to_existing(
     )
     cones_to_insert = cones_to_insert[order_to_insert]
 
-    history: list[FloatArray] = []
+    history: List[FloatArray] = []
 
     for cone_to_insert in cones_to_insert:
         distance_to_existing_cones = np.linalg.norm(
@@ -340,7 +340,7 @@ def combine_and_sort_virtual_with_real(
     other_side_cone_type: SortableConeTypes,  # pylint : disable=unused-argument
     car_pos: FloatArray,
     car_dir: FloatArray,  # pylint: disable=unused-argument
-) -> Tuple[FloatArray, BoolArray, list[FloatArray]]:
+) -> Tuple[FloatArray, BoolArray, List[FloatArray]]:
     """
     Combine the existing cones with the newly calculated cones into a single array.
     """

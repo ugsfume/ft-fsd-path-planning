@@ -9,7 +9,7 @@ Project: fsd_path_planning
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Tuple
+from typing import Tuple, List
 
 import numpy as np
 from icecream import ic  # pylint: disable=unused-import
@@ -27,7 +27,7 @@ MatchedCones = Tuple[FloatArray, FloatArray, IntArray, IntArray]
 class ConeMatchingInput:
     """Dataclass holding inputs."""
 
-    sorted_cones: list[FloatArray] = field(
+    sorted_cones: List[FloatArray] = field(
         default_factory=lambda: [np.zeros((0, 2)) for _ in ConeTypes]
     )
     slam_position: FloatArray = field(default_factory=lambda: np.zeros((2)))

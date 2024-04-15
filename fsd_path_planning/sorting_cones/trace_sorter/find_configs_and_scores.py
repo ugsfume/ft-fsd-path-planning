@@ -8,7 +8,7 @@ Project: fsd_path_planning
 from __future__ import annotations
 
 import sys
-from typing import Optional, cast
+from typing import Optional, cast, Tuple
 
 import numpy as np
 
@@ -38,7 +38,7 @@ def calc_scores_and_end_configurations(
     max_length: int = sys.maxsize,
     first_k_indices_must_be: Optional[IntArray] = None,
     return_history: bool = False,
-) -> tuple[FloatArray, IntArray, Optional[tuple[IntArray, BoolArray]]]:
+) -> Tuple[FloatArray, IntArray, Optional[Tuple[IntArray, BoolArray]]]:
     """
     Sorts a set of points such that the sum of the angles between the points is minimal.
     If a point is too far away, from any neighboring points, it is considered an outlier

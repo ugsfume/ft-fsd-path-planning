@@ -141,7 +141,7 @@ def angle_between_search_direction_of_cone_and_other_cone_is_too_large(
     other_cone_idx: int,
     search_directions_cache: SEARCH_DIRECTIONS_CACHE_TYPE,
     search_angle: float,
-) -> tuple[bool, bool]:
+) -> Tuple[bool, bool]:
     from_cone_to_other_cone = all_cone_directions[cone_idx, other_cone_idx]
 
     search_direction = search_directions_cache[directions_key]
@@ -192,7 +192,7 @@ def calculate_visible_cones_for_one_cone(
     search_direction_cache: SEARCH_DIRECTIONS_CACHE_TYPE,
     angles_between_search_direction_and_other_cone_cache: ANGLE_MASK_CACHE_TYPE,
     idxs_to_check,
-) -> tuple[BoolArray, BoolArray]:
+) -> Tuple[BoolArray, BoolArray]:
     angle_good_mask = np.zeros(len(idxs_to_check), dtype=np.bool_)
     angle_bad_mask = np.zeros(len(idxs_to_check), dtype=np.bool_)
     for i in range(len(idxs_to_check)):
@@ -235,7 +235,7 @@ def _impl_number_cones_on_each_side_for_each_config(
     existing_angles_mask_cache: Optional[ANGLE_MASK_CACHE_TYPE] = None,
     distance_matrix_square: Optional[FloatArray] = None,
     cones_to_cones_vecs: Optional[FloatArray] = None,
-) -> tuple[IntArray, IntArray]:
+) -> Tuple[IntArray, IntArray]:
     """
     For each configuration, find the number of cones that are on the expected side of
     the track, and the number of cones that are on the wrong side of the track.
@@ -319,12 +319,12 @@ def _impl_number_cones_on_each_side_for_each_config(
 class NearbyConeSearcher:
     def __init__(self) -> None:
         self.caches_cache: deque[
-            tuple[tuple[int, ConeTypes], tuple[dict, dict, FloatArray, FloatArray]]
+            Tuple[Tuple[int, ConeTypes], Tuple[dict, dict, FloatArray, FloatArray]]
         ] = deque(maxlen=20)
 
     def get_caches(
         self, cones: np.ndarray, cone_type: ConeTypes
-    ) -> tuple[dict, dict, FloatArray, FloatArray]:
+    ) -> Tuple[dict, dict, FloatArray, FloatArray]:
         array_buffer = cones.tobytes()
         array_hash = hash(array_buffer)
         cache_key = (array_hash, cone_type)
@@ -363,7 +363,7 @@ class NearbyConeSearcher:
         cone_type: ConeTypes,
         max_distance: float,
         max_angle: float,
-    ) -> tuple[np.ndarray, np.ndarray]:
+    ) -> Tuple[np.ndarray, np.ndarray]:
         cached_values = self.get_caches(cones, cone_type)
         return _impl_number_cones_on_each_side_for_each_config(
             cones, configs, cone_type, max_distance, max_angle, *cached_values[:]
@@ -384,7 +384,7 @@ def number_cones_on_each_side_for_each_config(
     cone_type: ConeTypes,
     max_distance: float,
     max_angle: float,
-) -> tuple[np.ndarray, np.ndarray]:
+) -> Tuple[np.ndarray, np.ndarray]:
     return NEARBY_CONE_SEARCH_CACHE.number_of_cones_on_each_side_for_each_config(
         cones, configs, cone_type, max_distance, max_angle
     )

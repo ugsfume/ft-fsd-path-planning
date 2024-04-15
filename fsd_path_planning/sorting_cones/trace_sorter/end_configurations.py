@@ -360,7 +360,7 @@ def _impl_find_all_end_configurations(
     car_direction: FloatArray,
     car_size: float,
     store_all_end_configurations: bool,
-) -> tuple[IntArray, Optional[tuple[IntArray, BoolArray]]]:
+) -> Tuple[IntArray, Optional[Tuple[IntArray, BoolArray]]]:
     """
     Finds all the possible paths up to length target length. If a path
     Args:
@@ -488,7 +488,7 @@ def find_all_end_configurations(
     car_direction: FloatArray,
     car_size: float,
     store_all_end_configurations: bool,
-) -> tuple[IntArray, Optional[tuple[IntArray, BoolArray]]]:
+) -> Tuple[IntArray, Optional[Tuple[IntArray, BoolArray]]]:
     """
     Finds all the possible paths that include all the reachable nodes from the starting
     Args:

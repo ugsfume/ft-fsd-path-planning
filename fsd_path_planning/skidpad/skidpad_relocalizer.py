@@ -112,7 +112,7 @@ def calculate_transformation(
     cluster_centers: FloatArray,
     original_vehicle_position: FloatArray,
     original_vehicle_direction: FloatArray,
-) -> tuple[callable, callable]:
+) -> Tuple[callable, callable]:
     # Your code here
     """
     Given two reference points and two new points calculate
@@ -211,10 +211,10 @@ class SkidpadRelocalizer:
         )
 
         self._transform_to_skidpad_frame: callable[
-            [FloatArray, float], tuple[FloatArray, float]
+            [FloatArray, float], Tuple[FloatArray, float]
         ] | None = None
         self._transform_to_original_frame: callable[
-            [FloatArray, float], tuple[FloatArray, float]
+            [FloatArray, float], Tuple[FloatArray, float]
         ] | None = None
 
         self._original_vehicle_position: FloatArray | None = None
@@ -279,7 +279,7 @@ class SkidpadRelocalizer:
 
     def transform_to_skidpad_frame(
         self, position_2d: FloatArray, yaw: float
-    ) -> tuple[FloatArray, float]:
+    ) -> Tuple[FloatArray, float]:
         if self._transform_to_skidpad_frame is None:
             raise ValueError("No transformation calculated yet")
 
@@ -287,7 +287,7 @@ class SkidpadRelocalizer:
 
     def transform_to_original_frame(
         self, position_2d: FloatArray, yaw: float
-    ) -> tuple[FloatArray, float]:
+    ) -> Tuple[FloatArray, float]:
         if self._transform_to_original_frame is None:
             raise ValueError("No transformation calculated yet")
 

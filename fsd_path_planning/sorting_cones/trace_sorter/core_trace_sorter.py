@@ -7,7 +7,7 @@ Project: fsd_path_planning
 """
 from __future__ import annotations
 
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List
 
 import numpy as np
 
@@ -32,7 +32,7 @@ from fsd_path_planning.utils.math_utils import (
 from fsd_path_planning.utils.utils import Timer
 
 
-def flatten_cones_by_type_array(cones_by_type: list[FloatArray]) -> FloatArray:
+def flatten_cones_by_type_array(cones_by_type: List[FloatArray]) -> FloatArray:
     """Ravel the cones_by_type_array"""
 
     if (
@@ -104,10 +104,10 @@ class TraceSorter:
 
     def sort_left_right(
         self,
-        cones_by_type: list[FloatArray],
+        cones_by_type: List[FloatArray],
         car_pos: FloatArray,
         car_dir: FloatArray,
-    ) -> tuple[FloatArray, FloatArray]:
+    ) -> Tuple[FloatArray, FloatArray]:
         timer_no_print = True
         cones_flat = flatten_cones_by_type_array(cones_by_type)
 

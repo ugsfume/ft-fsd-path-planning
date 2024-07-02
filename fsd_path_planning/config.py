@@ -117,7 +117,7 @@ def get_default_matching_kwargs(mission: MissionTypes) -> KwargsType:
         The created cone matching kwargs
     """
     return dict(
-        min_track_width=8,
+        min_track_width=5,
         max_search_range=8,
         max_search_angle=np.deg2rad(50),
         matches_should_be_monotonic=True,

@@ -118,7 +118,7 @@ def get_default_matching_kwargs(mission: MissionTypes) -> KwargsType:
     """
     return dict(
         min_track_width=5,
-        max_search_range=5,
+        max_search_range=6,
         max_search_angle=np.deg2rad(50),
         matches_should_be_monotonic=True,
     )
